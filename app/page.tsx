@@ -11,6 +11,7 @@ export default function Home() {
   const [session, setSession] = useState(false);
   const [disableButton, setDisableButton] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [propertiesFound, setPropertiesFound] = useState(0);
   const handleClick = async() =>{
     try{
 
@@ -43,7 +44,7 @@ export default function Home() {
     <div className = 'w-[100%] h-[50%] text-center items-center pt-10'>
         <h1 className ='text-3xl'>Hi, start the scan whenever you need one.</h1>
         <button className='bg-slate-900 font-semibold rounded py-2 text-white p-10 mt-10'
-          onClick={handleClick} disable={disableButton.toString()}>Click to run</button>
+          onClick={handleClick}>Click to run</button>
           {success && <p> The scan has started!</p>}
     </div>
    </>

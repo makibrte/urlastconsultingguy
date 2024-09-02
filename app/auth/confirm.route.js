@@ -1,4 +1,4 @@
-import { type NextRequest, NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 
 import { createClient } from '@/utils/supabase/server'
 
@@ -11,9 +11,9 @@ export async function GET(request) {
 
   // Create redirect link without the secret token
   const redirectTo = request.nextUrl.clone()
-  redirectTo.pathname = next
-  redirectTo.searchParams.delete('token_hash')
-  redirectTo.searchParams.delete('type')
+  redirectTo.pathname = next;
+  redirectTo.searchParams.delete('token_hash');
+  redirectTo.searchParams.delete('type');
 
   if (token_hash && type) {
     const supabase = createClient()

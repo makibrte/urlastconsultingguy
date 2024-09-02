@@ -4,16 +4,16 @@ import {NextResponse} from "next/server"
 
 export async function middleware(request) {
   // update user's auth session
-  const res = NextResponse.next()
+  //const res = NextResponse.next()
   const supabase = createClient();
 
   const { data: { user } } = await supabase.auth.getUser()
 
-  if (!user) {
-    return NextResponse.redirect(new URL('/login', req.url))
+  if (!user && request.nextUrl.pathname != '/login') {
+    return NextResponse.redirect(new URL('/login', request.url))
   }
 
-  return res;
+  return NextResponse.next();
   }
 
 export const config = {
